@@ -21,49 +21,49 @@
 
 // printName(sub, 4, 4)
 
-let student1 = {
-  studentName: "Arif",
-  age: 22,
-  eng: 95,
-  math: 93,
-  phy: 99,
-  getAvg() {
-    console.log(this);
-    let avg = (this.eng + this.math + this.phy) / 3;
-    console.log(avg);
-  },
-};
+// let student1 = {
+//   studentName: "Arif",
+//   age: 22,
+//   eng: 95,
+//   math: 93,
+//   phy: 99,
+//   getAvg() {
+//     console.log(this);
+//     let avg = (this.eng + this.math + this.phy) / 3;
+//     console.log(avg);
+//   },
+// };
 
-let student2 = {
-  studentName: "Mohd",
-  age: 22,
-  eng: 99,
-  math: 22,
-  phy: 40,
-  getAvg() {
-    let avg = (this.eng + this.math + this.phy) / 3;
-    console.log(this.studentName, avg);
-  },
-};
+// let student2 = {
+//   studentName: "Mohd",
+//   age: 22,
+//   eng: 99,
+//   math: 22,
+//   phy: 40,
+//   getAvg() {
+//     let avg = (this.eng + this.math + this.phy) / 3;
+//     console.log(this.studentName, avg);
+//   },
+// };
 
 // student1.getAvg();
 // student2.getAvg();
 
-const account = {
-  holder: "Mohd",
-  balance: 2000,
-  deposite(amount) {
-    this.balance = this.balance + amount;
-    alert("balance updated");
-  },
-  checkBalace() {
-    console.log(this.balance);
-  },
-  withdraw(amount) {
-    this.balance = this.balance - amount;
-    alert("money deducted");
-  },
-};
+// const account = {
+//   holder: "Mohd",
+//   balance: 2000,
+//   deposite(amount) {
+//     this.balance = this.balance + amount;
+//     alert("balance updated");
+//   },
+//   checkBalace() {
+//     console.log(this.balance);
+//   },
+//   withdraw(amount) {
+//     this.balance = this.balance - amount;
+//     alert("money deducted");
+//   },
+// };
 
 // account.checkBalace();
 
@@ -135,12 +135,12 @@ const account = {
 // }, 5000);
 
 
-console.log("before timeout")
+// console.log("before timeout")
 
 
-setTimeout(() => {
-  console.log("I stopped the timeout");
-}, 5000);
+// setTimeout(() => {
+//   console.log("I stopped the timeout");
+// }, 5000);
 
 
-console.log("after timout")
+// console.log("after timout")
