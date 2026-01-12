@@ -152,15 +152,15 @@
 
 // Summary: filter creates a new array containing only those elements who pass the test
 
-let arrFruits = [
-  "apple",
-  "banana",
-  "mango",
-  "orango",
-  "apple",
-  "apple",
-  "mango",
-];
+// let arrFruits = [
+//   "apple",
+//   "banana",
+//   "mango",
+//   "orango",
+//   "apple",
+//   "apple",
+//   "mango",
+// ];
 
 // at least one is true
 
@@ -168,25 +168,25 @@ let arrFruits = [
 // console.log(haiYaNai)
 
 // .every &&
-let ages = [20, 21, 22, 13, 19, 20];
+// let ages = [20, 21, 22, 13, 19, 20];
 
-// Har Banda 18+ rehna
-let haiYaNai = ages.every((age) => age > 18);
-console.log(haiYaNai);
+// // Har Banda 18+ rehna
+// let haiYaNai = ages.every((age) => age > 18);
+// console.log(haiYaNai);
 
-// .every = All elements should pass then only true
-// .some = at least one should pass then true
+// // .every = All elements should pass then only true
+// // .some = at least one should pass then true
 
-let name = "mohd";
+// let name = "mohd";
 
-try {
-  console.log(name);
-  if ((name = "mohd")) {
-    throw "mohd is not allowed";
-  }
-} catch (err) {
-  console.log("kuch error check karlo", err);
-}
+// try {
+//   console.log(name);
+//   if ((name = "mohd")) {
+//     throw "mohd is not allowed";
+//   }
+// } catch (err) {
+//   console.log("kuch error check karlo", err);
+// }
 
-console.log("after error");
-// console.log(college)
+// console.log("after error");
+// // console.log(college)
