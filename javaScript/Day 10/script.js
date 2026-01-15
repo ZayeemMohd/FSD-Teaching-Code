@@ -108,30 +108,38 @@ console.dir(document);
 // }
 
 // difference between `innerText`,  `innerHTML`, `textContent`
-{
-  // `innerTest`: shows the visible text contained in a node
-  {
-    let para1 = document.querySelector("p");
-    // console.log(para1.innerText); //
-  }
+// {
+//   // `innerTest`: shows the visible text contained in a node
+//   {
+//     let para1 = document.querySelector("p");
+//     // console.log(para1.innerText); //
+//   }
 
-  // `innerHTML`: shows the HTML content of a node as a string
-  {
-    let para1 = document.querySelector("p");
-    // console.log(para1.innerHTML); //
+//   // `innerHTML`: shows the HTML content of a node as a string
+//   {
+//     let para1 = document.querySelector("p");
+//     // console.log(para1.innerHTML); //
 
-    para1.innerText = "<b>This is bold text</b>"; //
-    para1.innerHTML = "<b>This is bold text</b>"; //
+//     para1.innerText = "<b>This is bold text</b>"; //
+//     para1.innerHTML = "<b>This is bold text</b>"; //
 
-    let matter = "hello I am bold text";
-    para1.innerHTML = `<b>${matter}</b>`; // "<b>hello I am bold text</b>"
-  }
+//     let matter = "hello I am bold text";
+//     para1.innerHTML = `<b>${matter}</b>`; // "<b>hello I am bold text</b>"
+//   }
 
-  // `textContent`: shows the full text content of a node
-  {
-    let para1 = document.querySelector("p");
-    // console.log(para1.textContent); //
+//   // `textContent`: shows the full text content of a node
+//   {
+//     let para1 = document.querySelector("p");
+//     // console.log(para1.textContent); //
 
 
-  }
-}
+//   }
+// }
+
+// setTimeout(()=>{
+//   console.log("first")
+// }, 3000);
+
+
+
+console.log("second");
