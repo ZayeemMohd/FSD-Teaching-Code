@@ -37,13 +37,13 @@
 // 2 step process
 
 
-const newPara = document.createElement("p");
+// const newPara = document.createElement("p");
 
-console.log(newPara);
+// console.log(newPara);
 
-newPara.innerHTML = "<b>This is a brand new paragraph</b>"
+// newPara.innerHTML = "<b>This is a brand new paragraph</b>"
 
 
-console.log(newPara)
+// console.log(newPara)
 
 

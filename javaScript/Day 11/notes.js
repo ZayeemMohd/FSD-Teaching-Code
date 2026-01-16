@@ -53,8 +53,11 @@
   // }
 
   // Example 3: Change multiple styles
-  // {
-  //   const para = document.querySelector("p");
-  //   para.style.color = "white";
-  // }
+  {
+    const para = document.querySelector("p");
+    para.style.color = "white";
+    para.style
+  }
+
+
 }
