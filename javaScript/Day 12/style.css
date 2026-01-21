@@ -1,8 +1,32 @@
-.box, .card{
+.box,
+.card {
   height: 100px;
   width: 100px;
   border: 5px solid black;
   margin: 2rem;
 }
 
+.active {
+  background-color: aquamarine;
+}
 
+div,
+ul {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.menu-items {
+  margin: 0 1rem;
+  list-style-type: none;
+  font-size: 1.2rem;
+}
+
+
+#display {
+  border: 1px solid black;
+  height: 100px;
+  background-color: antiquewhite;
+}

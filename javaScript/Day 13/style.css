@@ -1,0 +1,15 @@
+
+div{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#signalBox {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 50px;
+    background-color: red;
+}
+
