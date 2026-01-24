@@ -87,22 +87,22 @@
 
 // Register -> Send Email -> Update Database -> Send Welcome SMS
 // {
-//   function registerUser(username, VerifyCallback) {
-//     setTimeout(() => {
-//       console.log("User registered", username);
-//       VerifyCallback();
-//     }, 1000);
-//   }
+// function registerUser(username, VerifyCallback) {
+//   setTimeout(() => {
+//     console.log("User registered", username);
+//     // sendVerificationEmail();
+//     VerifyCallback();
+//   }, 1000);
+// }
 
-//   function sendVerificationEmail(updateDBcallback) {
-//     //     updateDBcallback =  ()=>{
-//     //     updateDatabase();
-//     //   }
-//     setTimeout(() => {
-//       console.log("Verification email sent");
-//       updateDBcallback();
-//     }, 1000);
-//   }
+// function sendVerificationEmail(updateDBcallback) {
+//   setTimeout(() => {
+//     console.log("Verification email sent");
+//     // updateDBcallback();
+//   }, 1000);
+// }
+
+// registerUser();
 
 //   function updateDatabase(smsCallback) {
 //     setTimeout(() => {
@@ -267,26 +267,126 @@
 // consuming promises:
 // .then() method
 // .catch() method
+// {
+//   const myPromise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       let sendORNot = Math.floor(Math.random() * 2);
+
+//       if (sendORNot) {
+//         resolve();
+//       } else {
+//         reject();
+//       }
+//     }, 2000);
+//   });
+
+//   console.log(myPromise);
+
+//   myPromise
+//     .then(() => {
+//       console.log("messsage send successfully");
+//     })
+//     .catch(() => {
+//       console.log("messsage not send ");
+//     });
+// }
+
+// A complex proise example
+// {
+//   // this function will promise
+//   function saveToDatabase(data) {
+//     return new Promise((resolve, reject) => {
+//       console.log("Started Save to database operation...");
+
+//       setTimeout(() => {
+//         const dbAvailable = Math.random() > 0.2;
+
+//         if (dbAvailable) {
+//           resolve(`${data}: data saved successfully 👍`);
+//         } else {
+//           reject("database not available");
+//         }
+//       }, 1500);
+//     });
+//   }
+
+//   saveToDatabase("msg1")
+//     .then((resolveMsg) => {
+//       console.log(resolveMsg);
+//       return saveToDatabase("msg2");
+//     })
+//     .then((resolveMsg) => {
+//       console.log(resolveMsg);
+//       return saveToDatabase("msg3");
+//     })
+//     .then((resolveMsg) => {
+//       console.log(resolveMsg);
+//     })
+//     .catch((rejectMsg) => {
+//       console.log(rejectMsg);
+//     });
+// }
+
+// {
+//   // some pre-defined promise functions
+
+//   fetch("https://jsonplaceholder.typicode.com/todos/2")
+//     .then((resolveResult) => {
+//       return resolveResult.json();
+//     })
+//     .then((resolveResult) => {
+//       console.log(resolveResult.title);
+//     })
+//     .catch((rejectResult) => {
+//       console.log(rejectResult);
+//     });
+// }
+
+// A complex proise example
 {
-  const myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let sendORNot = Math.floor(Math.random() * 2);
+  // this function will promise
+  function saveToDatabase(data) {
+    return new Promise((resolve, reject) => {
+      console.log("Started Save to database operation...");
 
-      if (sendORNot) {
-        resolve();
-      } else {
-        reject();
-      }
-    }, 2000);
-  });
+      setTimeout(() => {
+        const dbAvailable = Math.random() > 0.3;
 
-  console.log(myPromise);
-
-  myPromise
-    .then(() => {
-      console.log("messsage send successfully");
-    })
-    .catch(() => {
-      console.log("messsage not send ");
+        if (dbAvailable) {
+          resolve(`${data}: data saved successfully 👍`);
+        } else {
+          reject("database not available");
+        }
+      }, 1500);
     });
+  }
+
+  async function saveToDatabaseSolver() {
+    try {
+
+      const result1 = await saveToDatabase("msg1");
+      console.log(result1);
+
+      const result2 = await saveToDatabase("msg2");
+      console.log(result2);
+
+      const result3 = await saveToDatabase("msg3");
+      console.log(result3);
+
+      console.log("db started")
+
+    } catch (rejectMsg) {
+      console.log(rejectMsg);
+    }
+  }
+
+  saveToDatabaseSolver();
 }
+
+// saveToDatabase("msg1")
+// .then((result) => {
+//   console.log(result);
+// })
+// .catch((result)=>{
+//    console.log(result)
+// })

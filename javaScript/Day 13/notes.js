@@ -574,7 +574,7 @@
 //   }
 // }
 
-// 10. Refactoring teh color change example
+// 10. Refactoring the color change example
 // {
 //     function changeColorPromise(color, delay){
 //         return new Promise((resolve)=>{
@@ -600,4 +600,387 @@
 //     .catch((error)=>{
 //         console.log(error)
 //     })
+// }
+
+// Real world Example: User registration (Refactored)
+// {
+//   function registerUser(username) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         console.log("User registered", username);
+//         resolve();
+//       }, 1000);
+//     });
+//   }
+
+//   function sendVerificationEmail(username) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         console.log("Verification email sent to: ", username);
+//         resolve();
+//       }, 4000);
+//     });
+//   }
+
+//   function updateDatabase(username) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         console.log("Database updatated for: ", username);
+//         resolve();
+//       }, 1000);
+//     });
+//   }
+
+//   function welcomeSms(username) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         console.log("Welcome message for: ", username);
+//         resolve();
+//       }, 1000);
+//     });
+//   }
+
+//   registerUser("Mohd")
+//     .then(() => sendVerificationEmail("Mohd"))
+//     .then(() => updateDatabase("Mohd"))
+//     .then(() => welcomeSms("Mohd"))
+//     .catch(() => {
+//       console.log("something went wrong!");
+//     });
+// }
+
+// Passing data through the chain
+// {
+//     function getUser(userId){
+//         return new Promise((resolve, reject)=>{
+//             setTimeout(() => {
+//                 resolve({id: userId, name: "Alice"});
+//             }, 1000);
+//         })
+//     }
+
+//     function getUserOrders(user){
+//         return new Promise((resolve, reject) => {
+//             setTimeout(() => {
+//                 console.log("getting user orders...")
+//                 resolve({
+//                     user: user,
+//                     orders: ["Order1", "Order2", "Order3"]
+//                 })
+//             }, 1000);
+//         })
+//     }
+
+//     function calculateTotal(data){
+//         return new Promise((resolve)=>{
+//             console.log("calculating the total...")
+//             setTimeout(() => {
+//                 resolve({
+//                     user: data.user,
+//                     orders: data.orders,
+//                     total: 2500
+//                 })
+//             }, 1000);
+//         })
+//     }
+
+//     getUser(101)
+//     .then((user)=>{
+//         console.log("Got user: ", user.name);
+//         return getUserOrders(user)
+//     })
+//     .then((orders)=>{
+//         console.log(orders);
+//         return calculateTotal(orders)
+//     })
+//     .then((finalData)=>{
+//         // console.log(finalData)
+//         console.log("User: ", finalData.user.name);
+//         console.log("Total orders", finalData.orders.length);
+//         console.log("Total amount: ", finalData.total)
+//     })
+//     .catch((err)=>{
+//         console.log("Error occurred: ", err)
+//     })
+// }
+
+// 11. Summary
+{
+  // Synchronous code runs in order, blocking further execution until each task completes.
+  // Asynchronous code allows other operations to run while waiting for tasks to finish, improving responsiveness.
+  // I/O bound tasks involve waiting for external resources, while CPU bound tasks require intensive computation.
+  // Callbacks are functions passed as arguments to handle asynchronous results, but can lead to "callback hell" with nested structures.
+  // Promises provide a cleaner way to handle asynchronous operations, allowing chaining with .then() and error handling with .catch().
+  // Promise chaining enables sequential execution of asynchronous tasks without deep nesting, improving code readability and maintainability.
+}
+
+// Practice Exercises
+{
+  // Exercise 1: Simple promise
+  // create a promise that simulates checking if a student has passed or failed based on thier marks
+  //   {
+  //     function checkResult(marks) {
+  //       return new Promise((resolve, reject) => {
+  //         setTimeout(() => {
+  //           if (marks > 40) {
+  //             resolve("Passed! Congratulations!");
+  //           } else {
+  //             reject("Failed. Better luck next time.");
+  //           }
+  //         }, 1000);
+  //       });
+  //     }
+  //     checkResult(99)
+  //       .then((message) => {
+  //         console.log(message);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // Exercise 2: Promise chaining
+  // Create a chain that simulates: Login -> Fetch Profile -> Fetch Posts
+  //   {
+  //     function Login(username) {
+  //       return new Promise((resolve, reject) => {
+  //         setTimeout(() => {
+  //           console.log("Logged in as", username);
+  //           resolve(username);
+  //         }, 1000);
+  //       });
+  //     }
+  //     function fetchUserProfile(username) {
+  //       return new Promise((resolve, reject) => {
+  //         setTimeout(() => {
+  //           console.log(`fetching ${username} profile`);
+  //           resolve({ username: username, bio: "web developer" });
+  //         }, 1000);
+  //       });
+  //     }
+  //     function fetchPosts(profile) {
+  //       return new Promise((resolve) => {
+  //         setTimeout(() => {
+  //           console.log(`fetchinig posts of ${profile.username} `);
+  //           resolve({
+  //             profile: profile,
+  //             posts: ["post1", "post2", "post3"],
+  //           });
+  //         }, 1000);
+  //       });
+  //     }
+  //     Login("Mohd_dev")
+  //       .then((username) => {
+  //         return fetchUserProfile(username);
+  //       })
+  //       .then((profile) => {
+  //         return fetchPosts(profile);
+  //       })
+  //       .then((data) => {
+  //         console.log("username: ", data.profile.username);
+  //         console.log("posts count: ", data.posts.length);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // Exercise 3: Error handling
+  //   {
+  //     function randomOperation() {
+  //       return new Promise((resolve, reject) => {
+  //         setTimeout(() => {
+  //           let random = Math.random();
+  //           if (random > 0.5) {
+  //             resolve("Success! Random value: " + random);
+  //           } else {
+  //             reject("Failed! Random value: " + random);
+  //           }
+  //         }, 2000);
+  //       });
+  //     }
+  //     randomOperation()
+  //       .then((message) => {
+  //         console.log(message);
+  //       })
+  //       .then(() => {
+  //         console.log("done");
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+}
+
+// Add-ons
+{
+  // 1: Using the promises and .then() + .catch()   vertical approach
+  // {
+  // function saveToDatabase(data) {
+  //   return new Promise((resolve, reject) => {
+  //     console.log("started saving to database...");
+  //     setTimeout(() => {
+  //       let dbAvailable = Math.random() > 0.3 ? true : false;
+  //       if (dbAvailable) {
+  //         resolve(`${data} data saved successfully`);
+  //       } else {
+  //         reject("Database not  available");
+  //       }
+  //     }, 1000);
+  //   });
+  // }
+  
+  //   // version 1
+  //   saveToDatabase("msg1")
+  //   .then((resolveMsg) => {
+  //     console.log(resolveMsg); // `${data} data saved successfully`
+  //     saveToDatabase("msg2")
+  //     .then((resolveMsg) => {
+  //       console.log(resolveMsg);
+  //     })
+  //   })
+  //   .catch((errMsg) => {
+  //     console.log(errMsg)
+  //   })
+
+  //   // version 2
+  //   // saveToDatabase("msg1")
+  //   //   .then((resolveMsg) => {
+  //   //     console.log(resolveMsg);
+  //   //     // return "hello from big brother"
+  //   //   })
+  //   //   .then((Msg) => {
+  //   //     console.log(Msg);
+  //   //   })
+  //   //   .catch((rejectMsg) => {
+  //   //     console.log(rejectMsg);
+  //   //   });
+
+  //   // version 3
+  //   // saveToDatabase("msg1")
+  //   //   .then((resolveMsg) => {
+  //   //     console.log(resolveMsg);
+  //   //     return saveToDatabase("msg2");
+  //   //   })
+  //   //   .then((resolveMsg) => {
+  //   //     console.log(resolveMsg);
+  //   //     return saveToDatabase("msg3");
+  //   //   })
+  //   //   .then((resolveMsg) => {
+  //   //     console.log(resolveMsg);
+  //   //     return saveToDatabase("msg4");
+  //   //   })
+  //   //   .then((resolveMsg) => {
+  //   //     console.log(resolveMsg);
+  //   //   })
+  //   //   .catch((rejectMsg) => {
+  //   //     console.log(rejectMsg);
+  //   //   });
+  // }
+
+
+  // 2. Using the old callback    horizontal approach
+  {
+    function saveToDatabase(data, callback) {
+      console.log("calling database...");
+      setTimeout(() => {
+        const dbAvailabel = Math.random() > 0.2 ? true : false;
+        if (dbAvailabel) {
+          console.log(`${data} saved successfully`);
+          callback();
+        } else {
+          console.log(`${data} not saved!`);
+        }
+      }, 2000);
+    }
+
+    
+    saveToDatabase("msg1", () => {
+      saveToDatabase("msg2", () => {
+        saveToDatabase("msg3", () => {
+          saveToDatabase("msg4", () => {
+            console.log("all data send successfully! 👍");
+          });
+        });
+      });
+    });
+  }
+  // 3. Color change callback hell
+  // {
+  //   function changeColor(color, msg, callback) {
+  //     const signalBox = document.querySelector("#signalBox");
+  //     const h4 = document.querySelector("h4");
+  //     setTimeout(() => {
+  //       signalBox.style.backgroundColor = color;
+  //       h4.innerHTML = msg;
+  //       callback();
+  //     }, 1500);
+  //   }
+  //   changeColor("red", "Stop", () => {
+  //     changeColor("yellow", "Ready", () => {
+  //       changeColor("green", "Go", () => {
+  //         changeColor("red", "Stop", () => {
+  //           changeColor("yellow", "Ready", () => {
+  //             changeColor("green", "Go", () => {
+  //               console.log("all done successfully!");
+  //             });
+  //           });
+  //         });
+  //       });
+  //     });
+  //   });
+  // }
+  // 4. Color change promises version
+  // {
+  //   function changeColor(color, msg) {
+  //     return new Promise((resolve) => {
+  //       const signalBox = document.querySelector("#signalBox");
+  //       const h4 = document.querySelector("h4");
+  //       setTimeout(() => {
+  //         signalBox.style.backgroundColor = color;
+  //         h4.innerText = msg;
+  //         resolve();
+  //       }, 1500);
+  //     });
+  //   }
+  //   changeColor("red", "Stop")
+  //     .then(() => {
+  //       return changeColor("yellow", "Ready");
+  //     })
+  //     .then(() => {
+  //       return changeColor("green", "Go");
+  //     })
+  //     .then(() => {
+  //       return changeColor("red", "Stop");
+  //     })
+  //     .then(() => {
+  //       return changeColor("yellow", "Ready");
+  //     })
+  //     .then(() => {
+  //       return changeColor("green", "Go");
+  //     })
+  //     .then(() => {
+  //       console.log("all done successfully!");
+  //     });
+  // }
+}
+
+// extras : Async/Await
+// {
+//   function changeColorPromise(color, delay) {
+//     return new Promise((resolve) => {
+//       setTimeout(() => {
+//         document.body.style.backgroundColor = color;
+//         console.log("changed to", color);
+//         resolve();
+//       }, delay);
+//     });
+//   }
+
+//   async function changeColors() {
+//     await changeColorPromise("red", 1000);
+//     await changeColorPromise("orange", 1000);
+//     await changeColorPromise("blue", 1000);
+//     await changeColorPromise("black", 1000);
+//   }
+
+//   changeColors();
 // }
